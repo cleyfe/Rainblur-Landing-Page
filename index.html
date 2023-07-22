@@ -4,13 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Rainblur Landing Page Template: Tailwind Toolbox</title>
+    <title>Digital assets intelligence platform</title>
     <meta name="description" content="" />
     <meta name="keywords" content="" />
 
+    <link rel="stylesheet" type="text/css" href="index.css">
     <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
     <!--Replace with your tailwind.css once created-->
     <link href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"> <!-- Include Tailwind CSS library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js library -->
 
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
@@ -27,7 +30,7 @@
       <div class="w-full container mx-auto">
         <div class="w-full flex items-center justify-between">
           <a class="flex items-center text-indigo-400 no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-            Rain<span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">blur</span>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">Buckets.fi</span>
           </a>
 
           <div class="flex w-1/2 justify-end content-center">
@@ -55,20 +58,20 @@
         <!--Left Col-->
         <div class="flex flex-col w-full xl:w-2/5 justify-center lg:items-start overflow-y-hidden">
           <h1 class="my-4 text-3xl md:text-5xl text-white opacity-75 font-bold leading-tight text-center md:text-left">
-            Main
+            Portfolio 
             <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-400 via-pink-500 to-purple-500">
-              Hero Message
+              analytics
             </span>
-            to sell yourself!
+            designed for digital assets
           </h1>
           <p class="leading-normal text-base md:text-2xl mb-8 text-center md:text-left">
-            Sub-hero message, not too long and not too short. Make it just right!
+            You cannot predict the future, but you can prepare for it!
           </p>
 
           <form class="bg-gray-900 opacity-75 w-full shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
             <div class="mb-4">
               <label class="block text-blue-300 py-2 font-bold mb-2" for="emailaddress">
-                Signup for our newsletter
+                Don't miss our launch soon!
               </label>
               <input
                 class="shadow appearance-none border rounded w-full p-3 text-gray-700 leading-tight focus:ring transform transition hover:scale-105 duration-300 ease-in-out"
@@ -90,27 +93,232 @@
         </div>
 
         <!--Right Col-->
-        <div class="w-full xl:w-3/5 p-12 overflow-hidden">
-          <img class="mx-auto w-full md:w-4/5 transform -rotate-6 transition hover:scale-105 duration-700 ease-in-out hover:rotate-6" src="macbook.svg" />
-        </div>
+        <div class="w-full text-white xl:w-3/5 p-12 overflow-hidden">
+          <canvas id="myChart" class="mx-auto w-full md:w-4/5 transform transition hover:scale-105 duration-700 ease-in-out"></canvas> <!-- This is where the chart will be drawn -->
 
-        <div class="mx-auto md:pt-16">
-          <p class="text-blue-400 font-bold pb-8 lg:pb-6 text-center">
-            Download our app:
-          </p>
-          <div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in">
-            <img src="App Store.svg" class="h-12 pr-12 transform hover:scale-125 duration-300 ease-in-out" />
-            <img src="Play Store.svg" class="h-12 transform hover:scale-125 duration-300 ease-in-out" />
+          <div class="mt-8 flex flex-wrap justify-between">
+            <div class="opacity-75 w-full sm:w-1/4 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+                <label for="initialWealthSlider" class="block text-blue-300 py-2 font-bold mb-2">Initial Wealth: <span id="initialWealthValue">10000</span></label>
+                <input type="range" id="initialWealthSlider" min="0" max="100000" value="10000" step="1000" class="slider">
+            </div>
+            <div class="opacity-75 w-full sm:w-1/4 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+                <label for="savingsRateSlider" class="block text-blue-300 py-2 font-bold mb-2">Yearly Savings: <span id="savingsRateValue">5000</span></label>
+                <input type="range" id="savingsRateSlider" min="0" max="20000" value="5000" step="500" class="slider">
+            </div>
+            <div class="opacity-75 w-full sm:w-1/4 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+                <label for="yearsSlider" class="block text-blue-300 py-2 font-bold mb-2">Years: <span id="yearsValue">30</span></label>
+                <input type="range" id="yearsSlider" min="1" max="50" value="30" class="slider">
+            </div>
+            <div class="opacity-75 w-full sm:w-1/4 shadow-lg rounded-lg px-8 pt-6 pb-8 mb-4">
+                <label for="returnSlider" class="block text-blue-300 py-2 font-bold mb-2">Return: <span id="returnValue">5</span> %</label>
+                <input type="range" id="returnSlider" min="-0.05" max="1" value="0.1" step="0.01" class="slider">
+            </div>
           </div>
         </div>
 
+
         <!--Footer-->
         <div class="w-full pt-16 pb-6 text-sm text-center md:text-left fade-in">
-          <a class="text-gray-500 no-underline hover:no-underline" href="#">&copy; App 2020</a>
-          - Template by
-          <a class="text-gray-500 no-underline hover:no-underline" href="https://www.tailwindtoolbox.com">TailwindToolbox.com</a>
+          <a class="text-gray-500 no-underline hover:no-underline" href="#">&copy; Buckets.fi 2023</a>
         </div>
       </div>
     </div>
+    <script>
+         // Function to calculate wealth projection
+        function calculateWealthProjection(initialWealth, savingsRate, meanReturn, years, volatility = 0.5) {
+            let wealthProjection = [initialWealth];
+            for (let i = 1; i <= years; i++) {
+                let previousWealth = wealthProjection[i - 1];
+                // Generate a normally distributed return with specified mean and volatility
+                let u = Math.random();
+                let v = Math.random();
+                let randomReturn = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v) * volatility;
+                let newWealth = previousWealth * (1 + meanReturn + randomReturn) + savingsRate;
+                wealthProjection.push(newWealth);
+            }
+            return wealthProjection;
+        }
+
+        // Function to calculate percentile
+        function percentile(arr, p) {
+            arr.sort((a, b) => a - b);
+            let index = p * (arr.length - 1);
+            let lower = Math.floor(index);
+            let upper = lower + 1;
+            let weight = index % 1;
+            if (upper >= arr.length) return arr[lower];
+            return arr[lower] * (1 - weight) + arr[upper] * weight;
+        }
+
+        // Function to calculate average
+        function average(arr) {
+            let sum = arr.reduce((a, b) => a + b, 0);
+            return sum / arr.length;
+        }
+
+        // Create the chart using Chart.js
+        let ctx = document.getElementById('myChart').getContext('2d');
+        let chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: '10th Percentile',
+                        data: [],
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        fill: '+1',
+                    },
+                    {
+                        label: '90th Percentile',
+                        data: [],
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: '-1',
+                    },
+                    {
+                        label: '10th to 90th Percentile',
+                        data: [],
+                        backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                        borderColor: 'transparent',
+                        fill: '-1',
+                    },
+                    {
+                        label: 'Average Return',
+                        data: [],
+                        borderColor: 'rgba(255, 206, 86, 1)',
+                        fill: false,
+                    },
+                    {
+                        label: '0% Return',
+                        data: [],
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        fill: false,
+                    },
+                ]
+            },
+            options: {
+              responsive: true,
+              plugins: {
+                  title: {
+                      display: false,
+                      text: 'Wealth Projection Chart',
+                      color: 'white'
+                  },
+                  legend: {
+                      labels: {
+                        font: {
+                          size: 14,
+                          weight: 'bold',
+                        },
+                        color: '#93C5FD', 
+                      }
+                  }
+              },
+              scales: {
+                  x: {
+                      display: true,
+                      title: {
+                          display: true,
+                          text: 'Years',
+                          font: {
+                          size: 14,
+                          weight: 'bold',
+                        },
+                        color: '#93C5FD', 
+                      },
+                      ticks: {
+                        font: {
+                          size: 14,
+                          weight: 'bold',
+                        },
+                        color: '#93C5FD', 
+                      },
+                      grid: {
+                          borderColor: 'white'
+                      }
+                  },
+                  y: {
+                      display: true,
+                      title: {
+                          display: true,
+                          text: 'Wealth',
+                          font: {
+                          size: 14,
+                          weight: 'bold',
+                        },
+                        color: '#93C5FD', 
+                      },
+                      ticks: {
+                        font: {
+                          size: 14,
+                          weight: 'bold',
+                        },
+                        color: '#93C5FD', 
+                      },
+                      grid: {
+                      }
+                  }
+              }
+            }
+        });
+
+        // Function to update the chart
+        function updateChart() {
+            // Get slider values
+            let initialWealth = parseInt(document.getElementById('initialWealthSlider').value, 10);
+            let savingsRate = parseInt(document.getElementById('savingsRateSlider').value, 10);
+            let years = parseInt(document.getElementById('yearsSlider').value, 10);
+            let meanReturn = parseFloat(document.getElementById('returnSlider').value);
+
+            // Generate wealth projection data
+            let simulations = 5000;
+            let wealthProjections = [];
+            for (let i = 0; i < simulations; i++) {
+                wealthProjections.push(calculateWealthProjection(initialWealth, savingsRate, meanReturn, years));
+            }
+
+            // Calculate 10th and 90th percentiles, and average at each time step
+            let percentiles10 = [], percentiles90 = [], averages = [];
+            for (let i = 0; i <= years; i++) {
+                let wealthsAtYearI = wealthProjections.map(projection => projection[i]);
+                percentiles10.push(percentile(wealthsAtYearI, 0.10));
+                percentiles90.push(percentile(wealthsAtYearI, 0.90));
+                averages.push(average(wealthsAtYearI));
+            }
+
+            // Calculate wealth projection with 0% return
+            let noReturnProjection = calculateWealthProjection(initialWealth, savingsRate, 0, years, 0);
+
+            // Update the chart data
+            chart.data.labels = Array.from({length: years+1}, (_, i) => i);
+            chart.data.datasets[0].data = percentiles10;
+            chart.data.datasets[1].data = percentiles90;
+            chart.data.datasets[2].data = percentiles90;
+            chart.data.datasets[3].data = averages;
+            chart.data.datasets[4].data = noReturnProjection;
+            chart.update();
+        }
+
+        // Add event listeners to sliders
+        document.getElementById('initialWealthSlider').addEventListener('input', function(e) {
+            document.getElementById('initialWealthValue').textContent = e.target.value;
+            updateChart();
+        });
+        document.getElementById('savingsRateSlider').addEventListener('input', function(e) {
+            document.getElementById('savingsRateValue').textContent = e.target.value;
+            updateChart();
+        });
+        document.getElementById('yearsSlider').addEventListener('input', function(e) {
+            document.getElementById('yearsValue').textContent = e.target.value;
+            updateChart();
+        });
+        document.getElementById('returnSlider').addEventListener('input', function(e) {
+            document.getElementById('returnValue').textContent = (e.target.value * 100).toFixed(0);
+            updateChart();
+        });
+
+        // Initial chart update
+        updateChart();
+    </script>
   </body>
 </html>
